@@ -1,25 +1,21 @@
 const express = require('express');
-const db = require('./config/connection');
-const routes = require('./api');
-
-// Initialize the Express application
+const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware for parsing JSON and urlencoded form data
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Use routes from the routes directory
-app.use(routes);
-
-// Connect to the MongoDB database and then start the Express server
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-  });
+// Connect to MongoDB
+mongoose.connect('mongodb://127.0.0.1:27017/socialNetworkDB', {
 });
 
-db.on('error', (err) => {
-  console.error('MongoDB connection error:', err);
-});
+mongoose.connection.on('connected', () => console.log('Connected to MongoDB'));
+mongoose.connection.on('error', (err) => console.log('Error connecting to MongoDB:', err));
+
+// Routes
+app.use(require('./routes'));
+
+// Start the server
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
