@@ -83,11 +83,12 @@ Body: {
 [![Watch the video](/API%20Screenshot.png)](/social-network-api-video.mp4)
 
 ### Friends
-[![Watch the video](/friend%20screenshot.png)](https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4)
+[![Watch the video](/friend%20screenshot.png)](/friend-api-video.mp4)
 
 ## Author 
 Danielle Boenisch
 Github: https://github.com/danielleboe
+Email: danielleboenisch@gmail.com
 
 ## License
 MIT
